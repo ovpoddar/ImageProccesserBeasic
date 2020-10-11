@@ -14,7 +14,10 @@ namespace ImageProccesserBeasic
             // change the path to a valid image
             var data = await GetImageDataAsync(@"C:\Users\ayanp\Desktop\IMG_20200925_215107.jpg");
 
+            // create a blank image
             var img = new Bitmap(data.Width, data.Height);
+
+            // copy the image data in to the blank image 
             for (int i = 0; i < data.Height - 1; i++)
             {
                 for (int j = 0; j < data.Width - 1; j++)
@@ -22,6 +25,8 @@ namespace ImageProccesserBeasic
                     img.SetPixel(j, i, data.Data[i][j]);
                 }
             }
+
+            // make a squere in that place
             for (int i = 1000; i < 3000; i++)
             {
                 for (int j = 2000; j < 3000; j++)
@@ -33,6 +38,7 @@ namespace ImageProccesserBeasic
             img.Save(@"C:\Users\ayanp\Desktop\IMG_20200925_215108.jpg", ImageFormat.Jpeg);
         }
 
+        // get all pixels data about the image and width and height too
         static async Task<ImageDataModel> GetImageDataAsync(string Path)
         {
             return await Task.Run(() =>
