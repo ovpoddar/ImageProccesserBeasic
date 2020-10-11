@@ -1,6 +1,5 @@
 ﻿using ImageProcessorApp.Handlers;
 using ImageProcessorApp.Processors;
-using System.Threading.Tasks;
 
 namespace ImageProcessorApp
 {

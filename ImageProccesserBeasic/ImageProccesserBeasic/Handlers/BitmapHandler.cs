@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using ImageProcessorApp.Model;
+using System.Collections.Generic;
 using System.Drawing;
-using ImageProcessorApp.Model;
 
 namespace ImageProcessorApp.Handlers
 {
@@ -10,16 +10,16 @@ namespace ImageProcessorApp.Handlers
         {
             using var bmp = new Bitmap(path);
 
-            var imageDataModel = new ImageDataModel(bmp.Height + 1, bmp.Width + 1);
+            var imageDataModel = new ImageDataModel(bmp.Height, bmp.Width);
 
-            for (var i = 0; i < bmp.Height; i++)
+            for (var y = 0; y < bmp.Height-1; y++)
             {
-                var line = new List<Color>();
+                var colors = new List<Color>();
 
-                for (var n = 0; n < bmp.Width; n++) 
-                    line.Add(bmp.GetPixel(i, n));
+                for (var x = 0; x < bmp.Width-1; x++) 
+                    colors.Add(bmp.GetPixel(x, y));
                 
-                imageDataModel.Data.Add(line);
+                imageDataModel.Data.Add(colors);
             }
 
             return imageDataModel;
