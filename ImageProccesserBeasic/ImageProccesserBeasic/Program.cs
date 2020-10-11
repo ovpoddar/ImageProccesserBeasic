@@ -6,12 +6,12 @@ namespace ImageProcessorApp
 {
     class Program
     {
-        static Task Main(string[] args)
+        static void Main(string[] args)
         {
             var bitmapHandler = new BitmapHandler();
             var imageProcessor = new ImageProcessor(bitmapHandler);
 
-            imageProcessor.ProcessBitmap("", "");
+            imageProcessor.ProcessBitmap(@"D:\Test\Helium8af84bc6-e79c-4962-b48c-5ba7166efc83.jpg", @"D:\Test\Helium.jpg");
         }
     }
 }
