@@ -21,6 +21,7 @@ namespace ImageProccesserBeasic
                 Console.WriteLine("select the ammount:-");
                 await ImageProcesser.ApplyPixelBlur(Convert.ToInt32(Console.ReadLine()));
                 Console.WriteLine("Complete..." + outputPath);
+                ImageProcesser.Save();
             }
             catch (Exception ex)
             {

@@ -13,6 +13,7 @@ namespace ImageProccesserBeasic.ImageHandler
         private readonly string _image;
         private readonly string _output;
         private ImageDataModel _processData;
+        private Bitmap _ImageData;
 
         public ImageProcesser(string Image, string outputpath)
         {
@@ -34,18 +35,16 @@ namespace ImageProccesserBeasic.ImageHandler
                 int height = (int)(h * sampleSize);
 
                 // create a blank resized image
-                var img = new Bitmap(width, height);
+                _ImageData = new Bitmap(width, height);
 
 
                 // make a squere in that place
                 for (int i = 0; i < _processData.Height; i += sampleSize)
                 {
                     for (int j = 0; j < _processData.Width; j += sampleSize)
-                        ApplyPixelBlurHandler.Square(j, i, sampleSize, sampleSize, _processData.Data[i][j], img);
+                        ApplyPixelBlurHandler.Square(j, i, sampleSize, sampleSize, _processData.Data[i][j], _ImageData);
                 }
 
-                // change the output path toos
-                img.Save(_output, ImageFormat.Jpeg);
             });
         }
 
@@ -84,6 +83,15 @@ namespace ImageProccesserBeasic.ImageHandler
                 }
             });
 
+        }
+
+        /// <summary>
+        /// save the the process image in the out put location
+        /// </summary>
+        public void Save()
+        {
+            // change the output path toos
+            _ImageData.Save(_output, ImageFormat.Jpeg);
         }
     }
 }

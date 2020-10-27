@@ -6,5 +6,6 @@ namespace ImageProccesserBeasic.ImageHandler
     {
         Task ProcessImage();
         Task ApplyPixelBlur(int sampleSize);
+        void Save();
     }
 }
