@@ -40,14 +40,25 @@ namespace AccessPixelsInCSharp
             //this.Text = "Processing...";
             //textBox2.Text = await task;
             //this.Text = "Form1";
-            
-            Thread thread = new Thread(() =>
+            if (!File.Exists(_path))
             {
-                _data = CalculateAllPixels();
-                Action action = () => textBox2.Text = _data;
-                BeginInvoke(action);
-            });
-            thread.Start();
+                MessageBox.Show("file not found");
+                return;
+            }
+            try
+            {
+                Thread thread = new Thread(() =>
+                {
+                    _data = CalculateAllPixels();
+                    Action action = () => textBox2.Text = _data;
+                    BeginInvoke(action);
+                });
+                thread.Start();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private string CalculateAllPixels()
@@ -72,7 +83,7 @@ namespace AccessPixelsInCSharp
         {
             return $"{color.R} {color.G} {color.B} {color.A}";
         }
-        
+
 
     }
 }
