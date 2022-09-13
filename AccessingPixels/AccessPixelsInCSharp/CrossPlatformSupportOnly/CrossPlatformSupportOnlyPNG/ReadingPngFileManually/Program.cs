@@ -21,7 +21,7 @@ using (var reader = File.OpenRead(inputFile))
         Console.WriteLine("invalid file");
     else
     {
-        Console.WriteLine("validate sin=gnature successfully");
+        Console.WriteLine("validate signature successfully");
         while (true)
         {
             var a = new PngChunk(reader);
