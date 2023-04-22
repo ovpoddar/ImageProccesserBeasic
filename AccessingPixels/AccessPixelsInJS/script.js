@@ -58,5 +58,6 @@ function makePixel(r, g, b, a) {
     var pixelBox = document.createElement("div");
     pixelBox.setAttribute("class", "pixelBox");
     pixelBox.innerHTML = `${r} ${g} ${b} ${a}`;
+    pixelBox.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${a})`;
     return pixelBox;
 }
